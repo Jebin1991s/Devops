@@ -1,3 +1,3 @@
-Magi-Fan=$1
-ap-south-1=$2
-aws s3api create-bucket --bucket $Magi-Fan --region $ap-south-1 
+BUCKET_NAME=$1
+REGION=ap-south-1
+aws s3api create-bucket --bucket $BUCKET_NAME --region $REGION

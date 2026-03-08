@@ -21,11 +21,11 @@ pipeline {
 
         stage('Run Shell Script') {
             steps {
-                sh '''
+                sh """
                 echo "Command for EC2-Creation"
                 chmod +x EC2-Creation.sh
                 ./EC2-Creation.sh ${params.AMIID} ${params.InstanceType} ${params.Keyname} ${params.Security_Group}
-                '''
+                """
             }
         }
 

@@ -1,0 +1,32 @@
+pipeline {
+    agent {
+        label 'Infra'
+    }
+
+    parameters {
+        string(name: 'DB_INSTANCE_NAME', defaultValue: 'my-postgres-db', description: 'RDS Instance Name')
+        string(name: 'DB_USERNAME', defaultValue: 'postgresadmin', description: 'Database Username')
+        password(name: 'DB_PASSWORD', defaultValue: 'Test12345', description: 'Database Password')
+    }
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/Jebin1991s/Devops.git'
+            }
+        }
+
+        stage('Run Shell Script') {
+            steps {
+                sh '''
+                echo "Command for RDS Creation"
+                chmod +x RDS-Creation.sh
+                ./RDS-Creation.sh ${DB_INSTANCE_NAME} ${DB_USERNAME} ${DB_PASSWORD}
+                '''
+            }
+        }
+
+    }
+}

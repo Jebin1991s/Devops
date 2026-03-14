@@ -1,3 +1,4 @@
+echo "This My Demo"
 AMIID=$1
 InstanceType=$2
 Keyname=$3

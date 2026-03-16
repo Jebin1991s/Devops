@@ -1,3 +1,4 @@
+echo "RDS Creation"
 DB_INSTANCE_NAME=$1
 DB_USERNAME=$2
 DB_PASSWORD=$3

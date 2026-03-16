@@ -1,4 +1,4 @@
-echo "this is server start"
+echo "server start"
 INSTANCE_ID=$1
 REGION=ap-south-1
 aws ec2 start-instances --instance-ids $INSTANCE_ID --region $REGION

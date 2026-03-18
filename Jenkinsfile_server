@@ -1,50 +1,10 @@
-pipeline {
-    agent any
-
-    tools {
-        nodejs "nodejs"
-    }
-
-    stages {
-
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/jebin1991s/devops-app.git'
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo "No build needed for simple app"
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo "Add tests here"
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sshagent(['linux-server-ssh']) {
-                    sh '''
-                    ssh ec2-user@172.31.22.23 << EOF
-                    cd /home/user/devops-app || git clone https://github.com/jebin1991s/devops-app.git
-                    cd devops-app
-                    git pull
-                    npm install
-                    pm2 restart app || pm2 start app.js --name app
-                    EOF
-                    '''
-                }
-            }
-        }
+stage('Deploy') {
+    steps {
+        sh '''
+        cd /root/devops-app
+        git pull
+        npm install
+        pm2 restart devops-app || pm2 start app.js --name devops-app
+        '''
     }
 }

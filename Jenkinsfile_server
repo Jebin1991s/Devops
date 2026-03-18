@@ -1,7 +1,7 @@
 stage('Deploy') {
     steps {
         sh '''
-        cd /root/devops-app
+        cd /home/ec2-user/devops-app
         git pull
         npm install
         pm2 restart devops-app || pm2 start app.js --name devops-app

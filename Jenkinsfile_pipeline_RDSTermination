@@ -1,0 +1,46 @@
+
+pipeline {
+    agent {
+        label 'Infra'
+    }
+
+    parameters {
+        string(name: 'DB_INSTANCE_NAME', defaultValue: 'my-postgres-db', description: 'RDS Instance Name to Delete')
+    }
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/Jebin1991s/Devops.git'
+            }
+        }
+
+        stage('Verify AWS CLI') {
+            steps {
+                sh 'aws --version'
+            }
+        }
+
+        stage('Terminate RDS Instance') {
+            steps {
+                sh '''
+                echo "Starting RDS termination..."
+                chmod +x RDS-Termination.sh
+                ./RDS-Termination.sh ${DB_INSTANCE_NAME}
+                '''
+            }
+        }
+
+    }
+
+    post {
+        success {
+            echo "RDS termination command executed successfully"
+        }
+        failure {
+            echo "RDS termination pipeline failed"
+        }
+    }
+}

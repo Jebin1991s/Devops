@@ -1,0 +1,38 @@
+pipeline {
+    agent { label 'Infra' }
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', 
+                url: 'https://github.com/Jebin1991s/Devops.git'
+            }
+        }
+
+        stage('Verify Files') {
+            steps {
+                sh 'ls -lrt'
+            }
+        }
+
+        stage('Execute Bulk User Creation') {
+            steps {
+                sh '''
+                chmod +x bulkusercreation.sh
+                ./bulkusercreation.sh
+                '''
+            }
+        }
+
+    }
+
+    post {
+        success {
+            echo 'Users created successfully'
+        }
+        failure {
+            echo 'User creation failed'
+        }
+    }
+}

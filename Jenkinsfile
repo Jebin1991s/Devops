@@ -1,0 +1,33 @@
+pipeline {
+    agent {
+        label 'Infra'
+    }
+	parameters {
+  string defaultValue: 'ami-051a31ab2f4d498f5', description: 'Pass the AMI ID- ami-051a31ab2f4d498f5', name: 'AMIID'
+  string defaultValue: 'Devops-Test', description: 'Use the Key Name', name: 'Keyname'
+  choice choices: ['m7i-flex.large', 't3.medium'], description: 'Select the Instance type', name: 'InstanceType'
+  choice choices: ['default', 'Test'], description: 'Select the Security Group', name: 'Security_Group'
+}
+
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', 
+                url: 'https://github.com/Jebin1991s/Devops.git'
+            }
+        }
+
+        stage('Run Shell Script') {
+            steps {
+                sh '''
+                echo "Command for EC2-Creation"
+                chmod +x EC2-Creation.sh
+                ./EC2-Creation.sh "$AMIID" "$InstanceType" "$Keyname" "$Security_Group"
+                '''
+            }
+        }
+
+    }
+}

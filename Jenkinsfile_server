@@ -5,8 +5,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                cd /home/ec2-user/devops-app
-                git pull origin main
+                pwd
+                ls -l
+
                 npm install
                 pm2 restart devops-app || pm2 start app.js --name devops-app
                 '''

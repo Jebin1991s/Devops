@@ -1,4 +1,4 @@
-echo "This My Demo webhook-V2"
+echo "This My Demo webhook"
 AMIID=$1
 InstanceType=$2
 Keyname=$3

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starting bulk user creation..."
+echo "Starting bulk user creation Demo..."
 
 USERS=("Jose" "Kumaran" "Sree" "Jack" "Arul")
 

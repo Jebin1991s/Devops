@@ -7,9 +7,9 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
+        stage('Clean Workspace') {
             steps {
-                git 'https://github.com/Jebin1991s/Devops.git'
+                deleteDir()
             }
         }
 

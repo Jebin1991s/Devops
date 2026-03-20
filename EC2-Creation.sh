@@ -1,4 +1,4 @@
-echo "This My Demo webhook-V3"
+echo "Server Creation"
 AMIID=$1
 InstanceType=$2
 Keyname=$3

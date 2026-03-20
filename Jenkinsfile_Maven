@@ -8,8 +8,21 @@ pipeline {
     stages {
 
         stage('Clean Workspace') {
+<<<<<<< HEAD
             steps {
                 deleteDir()
+=======
+            steps {
+                deleteDir()
+            }
+        }
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'Developer',
+                    url: 'https://github.com/Jebin1991s/Devops.git',
+                    credentialsId: 'MYID'
+>>>>>>> ef4ba22 (Fixed workspace cleanup issue)
             }
         }
 
@@ -21,7 +34,7 @@ pipeline {
 
         stage('Deploy to Nexus') {
             steps {
-                sh 'mvn deploy'
+                echo "Deploy step here"
             }
         }
     }

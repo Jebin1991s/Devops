@@ -8,10 +8,8 @@ pipeline {
     stages {
 
         stage('Clean Workspace') {
-<<<<<<< HEAD
             steps {
                 deleteDir()
-=======
             steps {
                 deleteDir()
             }
@@ -22,7 +20,6 @@ pipeline {
                 git branch: 'Developer',
                     url: 'https://github.com/Jebin1991s/Devops.git',
                     credentialsId: 'MYID'
->>>>>>> ef4ba22 (Fixed workspace cleanup issue)
             }
         }
 

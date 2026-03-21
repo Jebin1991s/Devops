@@ -6,7 +6,7 @@
 
   <groupId>com.mycompany.call</groupId>
   <artifactId>my-call</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
 
   <name>my-call</name>
   <!-- FIXME change it to the project's website -->
@@ -91,11 +91,11 @@
   <distributionManagement>
     <snapshotRepository>
         <id>demosnapshot</id>
-        <url>http://3.7.74.106:8081/repository/maven-snapshots/</url>
+        <url>http://15.206.188.67:8081/repository/maven-snapshots/</url>
     </snapshotRepository>
     <repository>
         <id>demorelease</id>
-        <url>http://3.7.74.106:8081/repository/maven-releases/</url>
+        <url>http://15.206.188.67:8081/repository/maven-releases/</url>
     </repository>
   </distributionManagement>
 </project>
